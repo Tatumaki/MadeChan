@@ -5,7 +5,9 @@ describe MadeChan do
     expect(MadeChan::VERSION).not_to be nil
   end
 
-  madechan = MadeChan::Core.new
-  it "Greet should be おはようございます。"  do madechan.greet == 'おはようございます。';  end
+  madechan = MadeChan.call
+  it "Greet should be おはようございます、#{MadeChan::MASTER}様。"  do
+    madechan.greet(:wakeup,MadeChan::MASTER) == ('おはようございます、'+MadeChan::MASTER+'様。')
+  end
 end
 
